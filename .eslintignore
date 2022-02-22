@@ -1,0 +1,10 @@
+node_modules
+/dist
+.vscode
+.github
+styles
+imgs
+
+*.icon
+*.json
+*.html

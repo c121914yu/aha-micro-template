@@ -1,0 +1,13 @@
+/* placeholder */
+.el-input__inner {
+  /* plactholder样式 */
+  &::placeholder {
+    font-size: $sMini;
+    color: $dark4;
+  }
+}
+
+/* 预览图片关闭icon */
+.el-icon-circle-close {
+  color: #ffffff;
+}

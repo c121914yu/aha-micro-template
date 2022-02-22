@@ -1,0 +1,17 @@
+{
+  "title": "项目管理",
+  "name": "项目管理",
+  "port": 4003,
+  "css": [
+    "https://at.alicdn.com/t/font_2757021_7s2hwtb5mg7.css?spm=a313x.7781069.1998910419.43&file=font_2757021_7s2hwtb5mg7.css"
+  ],
+  "js": [
+  ],
+  "deferJs": [
+    "https://unpkg.com/cos-js-sdk-v5/dist/cos-js-sdk-v5.min.js",
+    "https://cdn.bootcdn.net/ajax/libs/echarts/5.0.1/echarts.min.js",
+    "https://aha-public-1257019972.cos.ap-shanghai.myqcloud.com/system_static/readFileSDK.js"
+  ],
+  "externals": {
+  }
+}

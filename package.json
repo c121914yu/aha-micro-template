@@ -1,0 +1,44 @@
+{
+  "name": "aha-management",
+  "version": "1.2.4",
+  "private": true,
+  "scripts": {
+    "dev": "aha-micro-cli dev",
+    "build": "aha-micro-cli build",
+    "deploy": "aha-micro-cli deploy",
+    "lint": ".\\node_modules\\.bin\\eslint --fix src\\**",
+    "lint:style": ".\\node_modules\\.bin\\stylelint --fix src\\**"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "aha-micro-cli": "^1.0.4",
+    "babel-eslint": "^10.1.0",
+    "commitizen": "^4.2.4",
+    "compression-webpack-plugin": "^5.0.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^7.15.0",
+    "husky": "^4.3.8",
+    "image-webpack-loader": "^7.0.1",
+    "lint-staged": "^10.3.0",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "stylelint": "13.13.1",
+    "stylelint-config-recess-order": "2.4.0",
+    "stylelint-config-standard": "22.0.0",
+    "stylelint-scss": "3.19.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "vue-template-compiler": "^2.6.11",
+    "webpack-bundle-analyzer": "^4.4.2"
+  }
+}

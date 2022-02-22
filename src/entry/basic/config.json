@@ -1,0 +1,9 @@
+{
+  "title": "Aha口袋管理系统",
+  "name": "基座",
+  "port": 4000,
+  "checked": true,
+  "deferJs": [],
+  "js": [],
+  "css": []
+}

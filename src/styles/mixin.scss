@@ -1,0 +1,28 @@
+/* 全局混合 */
+
+@mixin centerHeight($h:30px) {
+  height: $h;
+  line-height: $h;
+}
+
+/* 溢出省略 */
+@mixin ellipsis($line: 2) {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}
+
+/* div容器，btn样式 */
+@mixin divToBtn($h,$w,$bgColor: $primaryColor,$color: #fff,$radius: $radiusMiddle,$size: $sNormal) {
+  width: $w;
+  height: $h;
+  font-size: $size;
+  line-height: $h;
+  color: $color;
+  text-align: center;
+  cursor: pointer;
+  background-color: $bgColor;
+  border-radius: $radius;
+}

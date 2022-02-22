@@ -1,0 +1,11 @@
+.vscode
+node_modules
+dist
+.github
+
+assets
+
+*.css
+*.json
+
+reset.scss
