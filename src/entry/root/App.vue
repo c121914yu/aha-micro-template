@@ -1,10 +1,8 @@
 <template>
 	<div
 		v-if="loaded"
-		id="app"
+		id="root-app"
 	>
-		<Topbar v-if="$getState('adminInfo','isLogined')" />
-		<LeftNav v-if="leftNav" />
 		<router-view
 			id="main"
 			:class="{
@@ -21,11 +19,6 @@ export default {
   data() {
     return {
       loaded: false,
-    }
-  },
-  computed: {
-    leftNav() {
-      return this.$getState('navStore', 'showLeft') && this.$route.meta.leftNav
     }
   },
   created() {
@@ -50,17 +43,7 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
+#root-app {
   height: 100vh;
-  padding-top: $topbarHeight;
-
-  #main {
-    position: relative;
-    height: calc(100vh - #{$topbarHeight});
-
-    &.paddingLeft {
-      margin-left: $leftNavWidth;
-    }
-  }
 }
 </style>

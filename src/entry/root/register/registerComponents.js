@@ -2,10 +2,7 @@ console.log('===局部注册组件===')
 try {
   const context = require.context('../components', true, /index\.vue$/)
   const urls = context.keys()// 获取相对路径
-
   const names = {}
-
-  console.log(urls)
 
   urls.forEach(url => {
     /* 获取到文件名 */

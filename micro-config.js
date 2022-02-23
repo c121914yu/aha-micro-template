@@ -1,14 +1,14 @@
 /* 静态数据 */
 exports.css = [ // 通用css
-  'https://unpkg.com/element-ui/lib/theme-chalk/index.css',
-  'https://at.alicdn.com/t/font_2757021_7s2hwtb5mg7.css?spm=a313x.7781069.1998910419.43&file=font_2757021_7s2hwtb5mg7.css'
+  'https://unpkg.com/element-ui/lib/theme-chalk/index.css', // element主题
+  'https://at.alicdn.com/t/font_2757021_7s2hwtb5mg7.css?spm=a313x.7781069.1998910419.43&file=font_2757021_7s2hwtb5mg7.css', // 阿里图标库
 ]
 exports.js = [ // 优先同步加载的js
   'https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.min.js',
   'https://cdn.bootcdn.net/ajax/libs/vue-router/3.4.8/vue-router.min.js',
   'https://cdn.bootcdn.net/ajax/libs/vuex/3.5.1/vuex.min.js',
   'https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js',
-  'https://unpkg.com/element-ui/lib/index.js',
+  'https://unpkg.com/element-ui/lib/index.js', // element
   'https://cdn.staticfile.org/moment.js/2.24.0/moment.min.js', // moment时间转化
 ]
 exports.deferJs = [ // 延迟执行的js

@@ -1,5 +1,4 @@
 /* message通信层分发 */
-
 const receiveCallback = {
   /**
    * 挂载路由上报事件，获取当前路由的参数
@@ -9,12 +8,9 @@ const receiveCallback = {
     console.log('路由数据', data)
     /* 修改基座的路由参数 */
     Vue.prototype.$storesCommit('setNavParam', {
-      showLeft: data.meta.leftNav,
-      activeNav: data.meta.activeLeft,
+      showLeft: true,
       routeName: data.name,
     })
-    /* 修改url */
-    Vue.prototype.$pushTo('Basic', { route: data.name })
     /* 关闭加载动画 */
     Vue.prototype.$hideLoading()
   },
@@ -44,3 +40,4 @@ window.addEventListener('message', function(event) {
     typeof receiveCallback[ data.type ] === 'function' && receiveCallback[ data.type ](data)
   } catch (err) { err }
 })
+

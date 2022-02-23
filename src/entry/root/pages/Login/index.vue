@@ -51,8 +51,9 @@
 </template>
 
 <script>
-import { userInfo as mockUserInfo } from '@basic/constants/mock'
-import { RULE_LOGIN } from '@basic/constants/rules'
+import { userInfo as mockUserInfo } from '@root/constants/mock'
+import { RULE_LOGIN } from '@root/constants/rules'
+
 export default {
   data() {
     return {
@@ -96,8 +97,9 @@ export default {
             this.submitLoading = true
             this.$storesCommit('loginSuccess', {
               userInfo: mockUserInfo,
-              token: 'sss',
+              token: Date.now(),
             })
+            this.$pushTo(`app-dataShow`)
           } catch (err) { err }
           this.submitLoading = false
         }

@@ -20,14 +20,22 @@
 
 ### 子项目config.json
 ```json
-"title": "Aha口袋管理系统", // 浏览器title
-"name": "基座", // 选择运行时会提示的名字
-"port": 4000, // 本地开发端口号
-"checked": true, // 运行时是否被默认选中
-"deferJs": [], // 延迟执行的js
-"js": [], // 同步执行js
-"css": [] // 子项目css
+{
+  "title": "Aha口袋管理系统", // 浏览器title
+  "name": "基座", // 选择运行时会提示的名字
+  "port": 4000, // 本地开发端口号
+  "checked": true, // 运行时是否被默认选中
+  "deferJs": [], // 延迟执行的js
+  "js": [], // 同步执行js
+  "css": [] // 子项目css
+}
 ```
+
+## 子应用注册说明 
+在root容器下，constants/applications中注册。  
+子应用按以下规则访问：  
+1. rootOrigin/#/applicationName, root容器中会有一个路由指向子应用，applicationName是子应用name
+2. 子应用name在配置文件中返回
 
 ## 注意事项
  

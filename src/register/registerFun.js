@@ -6,6 +6,12 @@ import store from '@/store'
 let loadingInstance
 
 /**
+ * 是否为开发环境
+ */
+Vue.prototype.$isDev = function() {
+  return process.env.NODE_ENV === 'development'
+}
+/**
  * 全屏加载动画
  */
 Vue.prototype.$loading = function(msg = '', showBg = true, dom = null) {
@@ -68,18 +74,16 @@ Vue.prototype.$confirm = function(msg, success, fail = null) {
 /**
  * 根据name跳转路由
  * @param {String} name 路由名
- * @param {Object} query 路由参数，加在路径上
  */
-Vue.prototype.$pushTo = function(name, query = {}) {
-  window.$router.push({ name, query })
+Vue.prototype.$pushTo = function(name) {
+  window.$router.push({ name })
 }
 /**
  * 根据name跳转路由
  * @param {String} name 路由名
- * @param {Object} query 路由参数，加在路径上
  */
-Vue.prototype.$replaceTo = function(name, query = {}) {
-  window.$router.replace({ name, query })
+Vue.prototype.$replaceTo = function(name) {
+  window.$router.replace({ name })
 }
 
 /**

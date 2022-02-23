@@ -2,8 +2,13 @@ export default {
   state: () => {
     return {
       showLeft: true,
-      activeNav: 'DataShow',
-      routeName: '',
+      selectApp: {
+        activeRule: '',
+        host: '',
+        name: '',
+        path: '',
+      },
+      routeName: '', // 当前路由名
       loadTimer: null
     }
   },

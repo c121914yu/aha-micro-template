@@ -1,5 +1,5 @@
 import { setToken, clearToken } from '@/utils/userManage'
-import { userInfo as mockUserInfo } from '@basic/constants/mock'
+import { userInfo as mockUserInfo } from '@root/constants/mock'
 import { qs } from '@/utils/param'
 
 export default {
@@ -34,15 +34,11 @@ export default {
      * @param {Object} userInfo 用户信息
      * @param {String} token 用户凭证
      */
-    loginSuccess(state, { userInfo, token, query = {}}) {
+    loginSuccess(state, { userInfo, token }) {
       if (token) {
         setToken(token)
       }
       state.userInfo = userInfo
-      if (!query.route) {
-        query.route = qs(location.href).route || 'DataShow'
-      }
-      Vue.prototype.$pushTo('Basic', query)
       Vue.prototype.$success('登录成功')
       state.isLogined = true
     },
@@ -59,10 +55,9 @@ export default {
     },
   },
   actions: {
-    autoLogin({ commit }, query) {
+    autoLogin({ commit }) {
       return commit('loginSuccess', {
         userInfo: mockUserInfo,
-        query
       })
     }
   }

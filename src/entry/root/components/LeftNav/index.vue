@@ -3,13 +3,13 @@
 		<!-- 导航列表 -->
 		<el-menu
 			class="menu"
-			:default-active="$getState('navStore', 'activeNav')"
+			:default-active="activeRoute"
 			background-color="#545c64"
 			text-color="#fff"
 			active-text-color="#ffd04b"
 		>
 			<div
-				v-for="(item, i) in navs"
+				v-for="(item, i) in leftNavs"
 				:key="item.name"
 			>
 				<!-- 多导航 -->
@@ -26,7 +26,7 @@
 						v-for="child in item.child"
 						:key="child.name"
 						:index="child.activeName"
-						@click="pushTo(child.name)"
+						@click="onclickNav(child)"
 					>
 						<i :class="child.icon" />
 						<span>{{ child.label }}</span>
@@ -36,7 +36,7 @@
 				<el-menu-item
 					v-else
 					:index="item.activeName"
-					@click="pushTo(item.name)"
+					@click="onclickNav(item)"
 				>
 					<i :class="item.icon" />
 					<span>{{ item.label }}</span>
@@ -47,40 +47,29 @@
 </template>
 
 <script>
-import { leftNavs, devPaths, prodPaths } from '@basic/constants/navs'
-import { pubEvent } from '@/utils/eventBus'
+import leftNavs from '@root/constants/navs'
 
 export default {
   data() {
     return {
-      navs: leftNavs,
+      leftNavs
     }
   },
-  mounted() {
-    const name = this.$route.query.route || 'DataShow'
+  computed: {
+    activeRoute() {
+      const src = this.$getState('navStore', 'selectApp').path
+      const app = leftNavs.find(item => item.path === src)
 
-    this.pushTo(name)
-    /* 初次加载，确认高亮的路由 */
-    this.$storesCommit('setNavParam', {
-      activeNav: name,
-    })
+      return app ? app.activeName : ''
+    }
   },
   methods: {
     /**
 		 * 路由切换，改变路由参数
+     * @param {Object} nav 选中的路由
 		 */
-    pushTo(name) {
-      let path = prodPaths[ name ]
-
-      /* 开发环境 */
-      if (process.env.NODE_ENV === 'development') {
-        if (devPaths[ name ]) { // 如果填写了devPaths 则覆盖 线上访问路径
-          path = devPaths[ name ]
-        } else {
-          path = process.env.VUE_APP_ORIGIN + path
-        }
-      }
-      pubEvent('iframeChange', path)
+    pushTo(nav) {
+      console.log(nav)
     }
   }
 }
