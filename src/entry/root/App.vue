@@ -3,12 +3,7 @@
 		v-if="loaded"
 		id="root-app"
 	>
-		<router-view
-			id="main"
-			:class="{
-				'paddingLeft': leftNav
-			}"
-		/>
+		<router-view />
 	</div>
 </template>
 
@@ -30,8 +25,8 @@ export default {
      */
     async autoLogin() {
       if (getToken()) {
+        this.$loading('登录中...')
         try {
-          this.$loading('登录中...')
           await this.$storesAction('autoLogin', this.$route.query)
         } catch (err) { err }
         this.$hideLoading()
@@ -42,8 +37,9 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" >
 #root-app {
   height: 100vh;
+  overflow: hidden;
 }
 </style>

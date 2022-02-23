@@ -39,12 +39,8 @@ router.beforeEach((to, from, next) => {
 export default router
 
 function setIframeSrc(path) {
-  const app = applications.find(item => path.startsWith(item.activeRule))
+  const app = applications.find(item => path.startsWith(item.activeApp))
 
-  console.log({
-    path,
-    ...app
-  })
   if (!app) {
     console.log('子应用路径未匹配====')
     /* 跳转登录 */
@@ -53,10 +49,14 @@ function setIframeSrc(path) {
     })
     return ''
   }
+  console.log({
+    path: path.replace(app.activeApp, ''),
+    ...app
+  })
   setTimeout(() => {
     Vue.prototype.$storesCommit && Vue.prototype.$storesCommit('setNavParam', {
       selectApp: {
-        path,
+        path: path.replace(app.activeApp, ''),
         ...app
       }
     })

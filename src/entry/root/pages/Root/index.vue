@@ -5,6 +5,7 @@
 		<div
 			id="container"
 			:class="{
+				'padding-top': $getState('adminInfo','isLogined'),
 				'padding-left': $getState('navStore','showLeft')
 			}"
 		>
@@ -68,7 +69,12 @@ export default {
 .root {
   #container {
     position: relative;
-    height: calc(100vh - #{$topbarHeight});
+    width: 100%;
+    height: 100vh;
+
+    &.padding-top {
+      padding-top: $topbarHeight;
+    }
 
     &.padding-left {
       padding-left: $leftNavWidth;

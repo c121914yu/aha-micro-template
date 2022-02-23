@@ -57,9 +57,28 @@ export default {
   },
   computed: {
     activeRoute() {
-      const src = this.$getState('navStore', 'selectApp').path
-      const app = leftNavs.find(item => item.path === src)
+      const activeApp = this.$getState('navStore', 'selectApp').activeApp
+      const path = this.$getState('navStore', 'selectApp').path
+      const src = `${ activeApp }${ path }`
 
+      let app
+
+      /* 深度遍历查询导航，选中特定的导航item返回 */
+      const findNav = (nav) => {
+        if (nav.child) {
+          return nav.child.find(item => findNav(item))
+        } else {
+          if (nav.path === src) {
+            app = nav
+          }
+          return nav.path === src
+        }
+      }
+
+      leftNavs.find(item => findNav(item))
+
+      console.log(src)
+      console.log(app)
       return app ? app.activeName : ''
     }
   },
@@ -68,14 +87,14 @@ export default {
 		 * 路由切换，改变路由参数
      * @param {Object} nav 选中的路由
 		 */
-    pushTo(nav) {
-      console.log(nav)
+    onclickNav(nav) {
+      this.$router.push(nav.path)
     }
   }
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped>
 .left-nav {
   position: fixed;
   top: 0;

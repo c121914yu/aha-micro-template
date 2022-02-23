@@ -13,7 +13,7 @@ urls.forEach(url => {
   result.push({
     name, // app名称
     host: isDev ? `http://localhost:${ port }` : `${ process.env.VUE_APP_ROOT }/${ name }`, // 子应用根访问路径
-    activeRule: `/${ name }`
+    activeApp: `/${ name }`
   })
 })
 /* 其他框架应用接后面 */
