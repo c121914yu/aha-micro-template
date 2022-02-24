@@ -77,8 +77,6 @@ export default {
 
       leftNavs.find(item => findNav(item))
 
-      console.log(src)
-      console.log(app)
       return app ? app.activeName : ''
     }
   },

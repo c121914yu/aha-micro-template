@@ -1,5 +1,15 @@
-/* message通信层分发 */
+import { setToken } from '@/utils/userManage'
+import setChildGlobal from '@root/utils/postMessage'
+/* 子应用向基座postMessage */
 const receiveCallback = {
+  /**
+   * 设置token
+   */
+  setToken: function(token) {
+    console.log(token, '设置token')
+    setToken(token)
+    setChildGlobal({ token })
+  },
   /**
    * 挂载路由上报事件，获取当前路由的参数
    * @param {Object} data 路由数据
@@ -35,9 +45,11 @@ const receiveCallback = {
 /* 挂载iframe通信 */
 window.addEventListener('message', function(event) {
   try {
-    const data = JSON.parse(event.data)
+    const { type, data } = JSON.parse(event.data)
 
-    typeof receiveCallback[ data.type ] === 'function' && receiveCallback[ data.type ](data)
+    console.log('收到子应用信息', { type, data })
+
+    typeof receiveCallback[ type ] === 'function' && receiveCallback[ type ](data)
   } catch (err) { err }
 })
 

@@ -3,34 +3,39 @@ import { postToken } from './postMessage'
 
 /**
  * 获取用户Token
- * @returns token
  */
 export function getToken() {
-  return getStorage('aha_token') || ''
+  if (window === top) {
+    return getStorage('aha_token') || ''
+  } else {
+    return window.$data.token || ''
+  }
 }
 
 /**
  * 设置用户token
  * @param {String} token
- * @param {Boolean} report 是否上报token，如果是刷新的token则上报，下发修改的话不再上报
  */
-export function setToken(token, report = false) {
+export function setToken(token) {
   if (token !== getToken()) {
-    if (window === top) { // 基座，则向所有子项目广播更新token
-      Array.from(window.frames).forEach(child => {
-        postToken(token, child)
-      })
-    } else if (report) { // 如果是子项目，且需要上报，则向基座发送修改token信息
-      postToken(token, top)
+    if (window !== top) { // 子应用，触发基座修改token
+      postToken('')
+      window.$data.token = token
+    } else { // 基座，修改本地缓存
+      setStorage('aha_token', token)
     }
-    setStorage('aha_token', token)
   }
+  return token
 }
 
 /**
  * 清除用户token
  */
 export function clearToken() {
-  clearStorage('aha_token')
+  if (window === top) {
+    clearStorage('aha_token')
+  } else {
+    window.$data.token = ''
+  }
+  postToken('null')
 }
-

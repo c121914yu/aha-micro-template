@@ -164,6 +164,7 @@ export default {
   route: {
     meta: {
       leftNav: true,
+      needLogin: true,
       activeLeft: 'User'
     },
   },

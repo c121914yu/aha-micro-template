@@ -1,13 +1,24 @@
-/* postMessage中心 */
+/* 子应用上报基座通信API */
+
+/**
+ * token修改
+ * @param {String} token
+ * @param {Window} 窗口对象
+ */
+export function postToken(token) {
+  top.postMessage(JSON.stringify({
+    type: 'setToken',
+    data: token
+  }), '*')
+}
 
 /**
  * 路由上报
- *
  */
 export function reportRoute(data) {
   top.postMessage(JSON.stringify({
     type: 'reportRoute',
-    ...data
+    data
   }), '*')
 }
 
@@ -33,14 +44,3 @@ export function basicLoad(loading = false, loadText = '') {
   }), '*')
 }
 
-/**
- * token修改上报
- * @param {String} token
- * @param {Window} 窗口对象
- */
-export function postToken(token, that = top) {
-  that.postMessage(JSON.stringify({
-    type: 'setToken',
-    token
-  }), '*')
-}

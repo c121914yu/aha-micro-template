@@ -14,7 +14,7 @@
 				frameborder=0
 				scrolling="auto"
 				:src="src"
-				@load="$hideLoading()"
+				@load="loaded"
 				@error="$emit('error')"
 			/>
 		</div>
@@ -22,9 +22,7 @@
 </template>
 
 <script>
-import { subEvent } from '@/utils/eventBus'
-import { getToken } from '@/utils/userManage'
-import { qs, objToQeury } from '@/utils/param'
+import setChildGlobal from '@root/utils/postMessage'
 
 export default {
   computed: {
@@ -32,35 +30,19 @@ export default {
       const selectApp = this.$getState('navStore', 'selectApp')
       const src = `${ selectApp.host }/#${ selectApp.path }`
 
-      console.log(src)
+      this.$loading('加载中')
+
       return src
     }
   },
-  watch: {
-    'src': function() {
-      this.$loading('加载中')
-      this.$storesCommit('setLoadTimer')
-    }
-  },
-  created() {
-    this.subEvents()
-  },
   methods: {
     /**
-     * 事件订阅
+     * iframe加载完成, 加载失败也会触发
      */
-    subEvents() {
-      /* 路由修改 */
-      subEvent('iframeChange', (src) => {
-        if (src) {
-          const param = qs(src)
-
-          param.token = getToken()
-          this.src = src + objToQeury(param)
-          console.log('加载子项===>', this.src)
-        }
-      })
-    },
+    loaded() {
+      setChildGlobal({})
+      this.$hideLoading()
+    }
   }
 }
 </script>

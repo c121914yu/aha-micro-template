@@ -1,4 +1,3 @@
-import { destroyEvent } from '@/utils/eventBus'
 import applications from '@root/constants/applications'
 Vue.use(VueRouter)
 
@@ -43,16 +42,8 @@ function setIframeSrc(path) {
 
   if (!app) {
     console.log('子应用路径未匹配====')
-    /* 跳转登录 */
-    setTimeout(() => {
-      router.push('/dataShow')
-    })
     return ''
   }
-  console.log({
-    path: path.replace(app.activeApp, ''),
-    ...app
-  })
   setTimeout(() => {
     Vue.prototype.$storesCommit && Vue.prototype.$storesCommit('setNavParam', {
       selectApp: {

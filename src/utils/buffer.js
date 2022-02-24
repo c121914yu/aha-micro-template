@@ -16,3 +16,4 @@ export function getCompetitions() {
   }
   return competitions
 }
+

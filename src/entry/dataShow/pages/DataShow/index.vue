@@ -13,7 +13,9 @@ export default {
       activeLeft: 'DataShow',
     }
   },
-
+  created() {
+    console.log(window.$data)
+  }
 }
 </script>
 

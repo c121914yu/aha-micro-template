@@ -1,6 +1,5 @@
 import routes from './path'
-import { getToken } from '@/utils/userManage'
-import { reportRoute, notLogin } from '@/utils/postMessage'
+import { notLogin } from '@/utils/postMessage'
 Vue.use(VueRouter)
 
 // 获取原型对象上的push函数
@@ -21,9 +20,6 @@ window.$router = router
 
 /* 路由守卫 */
 router.beforeEach((to, from, next) => {
-  /* 每次路由变化，需要把新路由的参数上报 */
-  reportRoute(to)
-
   next()
 })
 

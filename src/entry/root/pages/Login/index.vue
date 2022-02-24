@@ -99,7 +99,7 @@ export default {
               userInfo: mockUserInfo,
               token: Date.now(),
             })
-            this.$pushTo(`app-dataShow`)
+            this.$router.push(`/dataShow`)
           } catch (err) { err }
           this.submitLoading = false
         }
@@ -111,9 +111,11 @@ export default {
 
 <style lang="scss" scoped>
 .page {
+  position: relative;
+
   .login {
-    position: absolute;
-    top: 40%;
+    position: fixed;
+    top: 50%;
     left: 50%;
     width: 400px;
     padding: 30px;

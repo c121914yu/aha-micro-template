@@ -46,6 +46,7 @@ export default {
      * 退出登录
      */
     loginOut(state, msg = '') {
+      console.log('退出登录')
       clearToken()
       state.userInfo = {}
       state.isLogined = false

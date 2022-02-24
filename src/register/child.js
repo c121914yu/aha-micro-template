@@ -1,12 +1,22 @@
-/* 子项目独有的部分 */
-import { setToken } from '@/utils/userManage'
-import { qs } from '@/utils/param'
-
+/* 子项目独有的接受postMessage方法 */
 if (window !== top) {
-  /* 首次进入检查路径有无token，有则写入 */
-  const token = qs().token
-
-  if (token) {
-    setToken(token, false)
+  const receiveCallback = {
+    /**
+     * 设置全局数据
+     */
+    setGlobalData: (data) => {
+      window.$data = data
+    }
   }
+
+  /* 挂载iframe通信 */
+  window.addEventListener('message', function(event) {
+    try {
+      const { type, data } = JSON.parse(event.data)
+
+      console.log('收到基座信息', { type, data })
+
+      typeof receiveCallback[ type ] === 'function' && receiveCallback[ type ](data)
+    } catch (err) { err }
+  })
 }
