@@ -37,7 +37,7 @@ exports.distPath = 'dist/'
   最终部署路径： ${webDir}/${入口目录名}
 */
 exports.deployConfig = {
-  projectName: 'Aha口袋后台管理系统', // 项目名
+  projectName: 'Iframe微前端框架', // 项目名
   test: {
     host: '1.116.111.206', // 服务器地址
     port: 22, // 服务器端口号

@@ -1,7 +1,7 @@
 <template>
 	<div class="top-bar">
 		<!-- 文字提示 -->
-		<h1>Aha管理系统</h1>
+		<h1>Iframe微前端框架</h1>
 		<!-- 个人信息 -->
 		<el-dropdown
 			placement="bottom"

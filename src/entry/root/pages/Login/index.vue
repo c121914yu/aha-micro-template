@@ -1,7 +1,7 @@
 <template>
 	<div class="page">
 		<div class="login">
-			<h1>Aha口袋后台管理系统</h1>
+			<h1>Iframe微前端框架模板</h1>
 			<el-form
 				ref="form"
 				label-width="60px"

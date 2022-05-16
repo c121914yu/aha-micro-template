@@ -15,7 +15,6 @@
 				scrolling="auto"
 				:src="src"
 				@load="loaded"
-				@error="$emit('error')"
 			/>
 		</div>
 	</div>

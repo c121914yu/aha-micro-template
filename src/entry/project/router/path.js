@@ -33,7 +33,6 @@ export default context.keys().map(key => {
     path,
     name,
     ...pageConfig,
-    // component: () => import('../pages/' + keyArr.slice(1, -1).join('/')),
     component: context(key).default
   }
 })
