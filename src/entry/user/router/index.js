@@ -13,8 +13,6 @@ VueRouter.prototype.push = function push(location) {
 const router = new VueRouter({
   mode: 'hash',
   routes,
-  base: '/',
-  linkExactActiveClass: 'route-active',
 })
 
 window.$router = router

@@ -43,4 +43,3 @@ export function basicLoad(loading = false, loadText = '') {
     loadText
   }), '*')
 }
-

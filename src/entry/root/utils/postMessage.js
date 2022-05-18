@@ -18,7 +18,6 @@ export default function(data = {}) {
       data: buffer
     }), '*')
   })
-  console.log(`共${ Array.from(window.frames).length }个子应用`)
 }
 
 export function getChildData() {

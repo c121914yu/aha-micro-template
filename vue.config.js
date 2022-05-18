@@ -7,7 +7,7 @@ const {
   port, // 端口号
   distPath, // 打包路径
   externals, // 无需打包的三方包
-  VUE_APP_ORIGIN, // 根地址
+  VUE_APP_ROOT, // 根地址
   pages // 页面
 } = process.env
 
@@ -28,7 +28,7 @@ module.exports = {
       'Access-Control-Allow-Origin': '*',
     },
   },
-  publicPath: isProduction ? `${ VUE_APP_ORIGIN }/${ VUE_APP_ENTRY }/` : './', // 生产环境要绝对路径，否则子应用无法找到
+  publicPath: isProduction ? `${ VUE_APP_ROOT }/${ VUE_APP_ENTRY }/` : './', // 生产环境要绝对路径，否则子应用无法找到
   outputDir: distPath,
   filenameHashing: true, // 生成的静态资源在它们的文件名中包含了 hash 以便更好的控制缓存
   productionSourceMap: false, // 不需要生产环境的 source map

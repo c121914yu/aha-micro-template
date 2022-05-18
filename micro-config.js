@@ -39,9 +39,9 @@ exports.distPath = 'dist/'
 exports.deployConfig = {
   projectName: 'Iframe微前端框架', // 项目名
   test: {
-    host: '1.116.111.206', // 服务器地址
+    host: '120.76.193.200', // 服务器地址
     port: 22, // 服务器端口号
-    webDir: '/home/web_project/wwwTest/ahaManagement', // 服务器部署路径（不可为空或'/'，不需要尾'/'）
+    webDir: '/web_project/yjl/graduationDesign', // 服务器部署路径（不可为空或'/'，不需要尾'/'）
   },
   production: {
     host: '1.116.111.206', // 服务器地址
