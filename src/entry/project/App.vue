@@ -1,6 +1,6 @@
 <template>
 	<div
-		v-if="loaded"
+		v-if="loaded && $getState('initStore','initFinish')"
 		id="app"
 	>
 		<router-view />

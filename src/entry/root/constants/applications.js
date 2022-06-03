@@ -16,6 +16,7 @@ urls.forEach(url => {
     activeApp: `/${ name }`
   })
 })
+
 /* 其他框架应用接后面 */
 export default [
   ...result

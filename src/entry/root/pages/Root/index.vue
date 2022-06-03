@@ -10,6 +10,7 @@
 			}"
 		>
 			<iframe
+				id="Iframe"
 				class="iframe"
 				frameborder=0
 				scrolling="auto"
@@ -21,7 +22,9 @@
 </template>
 
 <script>
-import setChildGlobal from '@root/utils/postMessage'
+import { setChildGlobalData } from '@root/utils/postMessage'
+
+let currentAppName = ''
 
 export default {
   computed: {
@@ -29,7 +32,10 @@ export default {
       const selectApp = this.$getState('navStore', 'selectApp')
       const src = `${ selectApp.host }/#${ selectApp.path }`
 
-      this.$loading('加载中')
+      if (currentAppName !== selectApp.name) {
+        this.$loading('加载中')
+        currentAppName = selectApp.name
+      }
 
       return src
     }
@@ -39,7 +45,7 @@ export default {
      * iframe加载完成, 加载失败也会触发
      */
     loaded() {
-      setChildGlobal({})
+      setChildGlobalData()
       this.$hideLoading()
     }
   }

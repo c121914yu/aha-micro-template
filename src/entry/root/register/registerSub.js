@@ -1,7 +1,11 @@
 import { setToken } from '@/utils/userManage'
-import setChildGlobal from '@root/utils/postMessage'
+import { setGlobalData } from '@root/utils/postMessage'
 /* 子应用向基座postMessage */
 const receiveCallback = {
+  /**
+   * 设置全局数据
+   */
+  setGlobalData,
   /**
    * 设置token
    */

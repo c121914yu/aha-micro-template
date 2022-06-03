@@ -5,7 +5,8 @@ if (window !== top) {
      * 设置全局数据
      */
     setGlobalData: (data) => {
-      window.$data = data
+      window.$data = JSON.parse(data)
+      Vue.prototype.$storesCommit('initSuccess')
     }
   }
 

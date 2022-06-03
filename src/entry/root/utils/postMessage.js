@@ -12,14 +12,14 @@ export default function(data = {}) {
     ...buffer,
     ...data
   }
+  setChildGlobalData()
+}
+
+export function setChildGlobalData() {
   Array.from(window.frames).forEach(child => {
     child.postMessage(JSON.stringify({
       type: 'setGlobalData',
-      data: buffer
+      data: JSON.stringify(buffer)
     }), '*')
   })
-}
-
-export function getChildData() {
-  return JSON.parse(JSON.stringify(buffer))
 }

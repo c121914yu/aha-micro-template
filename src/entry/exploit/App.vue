@@ -1,5 +1,8 @@
 <template>
-	<div id="app">
+	<div
+		v-if="$getState('initStore','initFinish')"
+		id="app"
+	>
 		<router-view />
 	</div>
 </template>
